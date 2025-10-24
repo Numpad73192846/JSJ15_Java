@@ -6,18 +6,22 @@ public class Ex06_Arrays02 {
 
 	public static void main(String[] args) {
 		
+		// 배열 선언 및 생성
 		int arr [][] = new int [3][];
 		arr[0] = new int[2];
 		arr[1] = new int[4];
 		arr[2] = new int[3];
 		
+		// 입력 객체 생성
 		Scanner sc = new Scanner(System.in);
 		
+		// 다중차원이므로 이중반복문 사용
 		for (int i = 0; i < arr.length; i++) {
 			for (int j = 0; j < arr[i].length; j++) {
 				arr[i][j] = sc.nextInt();
 			}
 		}
+		
 		for (int i = 0; i < arr.length; i++) {
 			for (int j = 0; j < arr[i].length; j++) {
 				System.out.print(arr[i][j] + " ");
