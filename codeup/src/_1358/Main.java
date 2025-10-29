@@ -6,23 +6,25 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
-		boolean sw = true; 
 		int count = 0;
-		int k = 0;
-		
+		int count2 = 0;
+		boolean sw = true;		// 홀수 열 판단을 위해 선언
 		for (int i = 0; i < n; i++) {
 			if ( sw == true ) {
 				for (int j = 0; j <= i; j++) {
-					for (; k < n-count; k++) {
-						System.out.print(" ");
+					if( count2 == 0 ) {
+						for (int k = 0; k < (n / 2) - count; k++) {
+							System.out.print(" ");
+						}
+						count2++;
 					}
 					System.out.print("*");
 				}
-				k = count;
+				count++;
+				if( i < n - 1 )System.out.println();
 			}
-			count++;
+			count2 = 0;
 			sw = !sw;
-			System.out.println();
 		}
 		sc.close();
 	}
