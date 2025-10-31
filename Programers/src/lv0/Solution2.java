@@ -1,4 +1,4 @@
-package Lv0;
+package lv0;
 
 public class Solution2 {
 	public String solution(String my_string) {
