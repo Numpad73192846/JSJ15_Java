@@ -25,8 +25,8 @@ class Person  implements Comparable<Person>{
 	@Override
 	public int compareTo(Person o) {
 		// * 나이순으로 오름차순 정렬
-		int thisAge = this.getAge();		// 해당객체의 나이
-		int comAge = o.getAge();			// 비교객체의 나이
+//		int thisAge = this.getAge();		// 해당객체의 나이
+//		int comAge = o.getAge();			// 비교객체의 나이
 		
 		// 방법 1
 //		if ( thisAge > comAge ) {
