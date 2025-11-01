@@ -1,25 +1,47 @@
 package java_mission;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Index06 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int n;
-		int count = 1;
-		int rand;
-		int arr[] = new int[6];
+		Random random = new Random();
+		
+		int n, temp;
+		int lotto[] = new int[6];
 		
 		System.out.print("몇 게임? ");
 		n = sc.nextInt();
 		
 		for (int i = 0; i < n; i++) {
-			arr[i] = (int)(Math.random() * 45 + 1);
-			System.out.println("[" + count + "게임] : " + arr[i]);
+			System.out.print("[" + (i + 1) + "게임] : ");
+			
+			for (int j = 0; j < lotto.length; j++) {
+				lotto[j] = random.nextInt(45) + 1;
+				for (int k = 0; k <= j; k++) {
+					if ( lotto[j] == lotto[k] ) {
+						lotto[j] = random.nextInt(45) + 1;
+						break;
+					}
+				}
+			}
+			
+			for (int j = 0; j < lotto.length-1; j++) {
+				for (int k = 0; k < lotto.length-1; k++) {
+					if ( lotto[k] > lotto[k+1] ) {
+						temp = lotto[k];
+						lotto[k] = lotto[k+1];
+						lotto[k+1] = temp;
+					}
+				}
+			}
+			
+			for (int j = 0; j < lotto.length; j++) {
+				System.out.print(lotto[j] + " ");
+			}
+			System.out.println();
 		}
-		
-		
-		
 		sc.close();
 	}
 }
