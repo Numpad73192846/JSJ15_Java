@@ -7,25 +7,29 @@ import java.io.Serializable;
 // * 직렬화? 객체 -> 바이트 스트림
 public class Person implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	// private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 2L;
 	
 	private String name;
 	private int age;
+	// 변수 추가
+	private String address;
 	
 	// 기본 생성자
 	public Person() {
 	}
 
 	// 매개변수가 있는 생성자
-	public Person(String name, int age) {
+	public Person(String name, int age, String address) {
 		this.name = name;
 		this.age = age;
+		this.address = address;
 	}
 
 	// toString
 	@Override
 	public String toString() {
-		return "Person [name=" + name + ", age=" + age + "]";
+		return "Person [name=" + name + ", age=" + age + ", adress=" + address + "]";
 	}
 	
 	
