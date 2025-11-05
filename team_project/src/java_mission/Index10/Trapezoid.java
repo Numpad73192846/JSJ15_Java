@@ -1,6 +1,6 @@
 package java_mission.Index10;
 
-public class Trapezoid extends Figure {
+public class Trapezoid {
 	
 	double top, bottom ,height;
 	
