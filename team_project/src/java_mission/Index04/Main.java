@@ -1,8 +1,8 @@
-package java_mission;
+package java_mission.Index04;
 
 import java.util.Scanner;
 
-public class Index04 {
+public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();

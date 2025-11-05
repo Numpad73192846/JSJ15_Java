@@ -1,8 +1,8 @@
-package java_mission;
+package java_mission.Index02;
 
 import java.util.Scanner;
 
-public class Index02 {
+public class Main {
 	public static void main(String[] args) {
 		int sum1 = 0;
 		int sum2 = 0;

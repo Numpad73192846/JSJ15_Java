@@ -1,11 +1,11 @@
-package java_mission;
+package java_mission.Index09;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 
-public class Index09 {
+public class Main {
 	
 	public static String Name(String str) {
 		String person = "";
@@ -41,7 +41,7 @@ public class Index09 {
 	}
 	
 	public static void main(String[] args) {
-		Index09 index09 = new Index09();
+		Main index09 = new Main();
 		List<String> personlist = index09.personlist();
 		String arr[] = new String[personlist.size()];
 		String result[] = personlist.toArray(arr);
@@ -55,8 +55,8 @@ public class Index09 {
 		
 		System.out.println("성명 출장비\t오만원\t만원\t오천원\t천원\t오백원\t백원\t오십원\t십원\t오원\t일원");
 		for (int i = 0; i < result.length; i++) {
-			System.out.print(Index09.Name(result[i]) + " " + Index09.Money(result[i]) + "\t");
-			input = Index09.Money(result[i]);
+			System.out.print(Main.Name(result[i]) + " " + Main.Money(result[i]) + "\t");
+			input = Main.Money(result[i]);
 			while(money >= 1) {
 				countM = input / money;
 				sum[count] += countM;
@@ -75,6 +75,7 @@ public class Index09 {
 			count = 0;
 			System.out.println();
 		}
+		
 		System.out.print("전체화폐매수:\t");
 		for (int i = 0; i < 10; i++) {
 			System.out.print(sum[i] + "\t");

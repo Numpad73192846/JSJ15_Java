@@ -1,8 +1,8 @@
-package java_mission;
+package java_mission.Index05;
 
 import java.util.Scanner;
 
-public class Index05 {
+public class Main {
 	
 	static void PrintLine(int n) {
 		String ck1 = "'황금올리브 반반한 치킨'";
@@ -50,13 +50,13 @@ public class Index05 {
 			case 0:
 				break;
 			case 1:
-				Index05.PrintLine(n);
+				Main.PrintLine(n);
 				break;
 			case 2:
-				Index05.PrintLine(n);
+				Main.PrintLine(n);
 				break;
 			case 3:
-				Index05.PrintLine(n);
+				Main.PrintLine(n);
 				break;
 			default:
 				System.out.println();

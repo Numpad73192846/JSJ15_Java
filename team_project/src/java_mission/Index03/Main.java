@@ -1,6 +1,6 @@
-package java_mission;
+package java_mission.Index03;
 
-public class Index03 {
+public class Main {
 	public static void main(String[] args) {
 		
 		int ten;

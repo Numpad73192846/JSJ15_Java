@@ -1,8 +1,8 @@
-package java_mission;
+package java_mission.Index08;
 
 import java.util.Scanner;
 
-public class Index08 {
+public class Main {
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
