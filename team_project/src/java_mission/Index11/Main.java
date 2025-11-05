@@ -36,7 +36,6 @@ public class Main {
 					System.out.print("비밀번호>> ");
 					bank.passward = sc.nextInt();
 					System.out.println("'" + bank.name + "'님의 계좌가 개설되었습니다.");
-					System.out.println(bank.account);
 					break;
 				case 2:
 					break;
