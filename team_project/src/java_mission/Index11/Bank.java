@@ -3,23 +3,14 @@ package java_mission.Index11;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bank extends Account {
+public class Bank {
 
-	Account account;
+	static List<Account> accountList = 	new ArrayList<Account>();
 	
-	public Bank() {
-		System.out.println(num);
-	}
-	
-	
-	
-	public Bank(Account account) {
-		this.account = account;
-	}
-
-	public List<String> getAccount(String num, String name , int money, int passward) {
-		List<String> list = new ArrayList<String>();
-		return list;
+	public static Account createdAccount(String num, String name, int money, int passward) {
+		Account account = new Account(num, name, money, passward);
+		accountList.add(account);
+		return account;
 	}
 	
 }

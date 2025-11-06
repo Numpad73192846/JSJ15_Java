@@ -2,10 +2,10 @@ package java_mission.Index11;
 
 public class Account {
 	
-	String num;
-	String name;
-	int money;
-	int passward;
+	private String num;
+	private String name;
+	private int money;
+	private int passward;
 	
 
 	public Account() {

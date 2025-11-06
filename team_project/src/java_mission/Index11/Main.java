@@ -2,12 +2,14 @@ package java_mission.Index11;
 
 import java.util.Scanner;
 
-public class Main {
+public class Main extends Bank {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		Bank bank = new Bank();
+		Account newAccount;
 		
+		String num, name;
+		int money, passward, answer;
 		
 		int menuNo;
 		
@@ -28,26 +30,42 @@ public class Main {
 				case 1:
 					
 					System.out.print("계좌번호>> ");
-					bank.num = sc.nextLine();
+					num = sc.nextLine();
 					System.out.print("예금주>> ");
-					bank.name = sc.nextLine();
+					name = sc.nextLine();
 					System.out.print("최초예금액>> ");
-					bank.money = sc.nextInt();
+					money = sc.nextInt();
 					System.out.print("비밀번호>> ");
-					bank.passward = sc.nextInt();
-					System.out.println("'" + bank.name + "'님의 계좌가 개설되었습니다.");
+					passward = sc.nextInt();
+					sc.nextLine();
+					
+					newAccount = Bank.createdAccount(num, name, money, passward);
+					System.out.println("'" + newAccount.getName() + "'님의 계좌가 개설되었습니다.");
+					
 					break;
 				case 2:
+					System.out.println("============ 입금 ============");
+					System.out.print("계좌번호>> ");
+					num = sc.nextLine();
+					System.out.print("임금액>> ");
+					money = sc.nextInt();
+					sc.nextLine();
+					
+					System.out.println("'"+ "'님에게 입금하는게 맞으십니까?");
+					System.out.println("1. 예");
+					System.out.println("2. 아니요");
+					answer = sc.nextInt();
+					
+					if(answer == 2) break;
 					break;
 				case 3:
+					System.out.println("============ 출금 ============");
 					break;
 				case 4:
 					System.out.println("============ 계좌조회 ============");
-					System.out.print("계좌번호>> " + bank.num + "\n");
-					System.out.print("비밀번호>> " + bank.passward + "\n");
-					System.out.print("'" + bank.name + "'님의 계좌잔액은 " + bank.money + "원 입니다.");
 					break;
 				case 5:
+					System.out.println("============ 계좌목록 ============");
 					break;
 			}
 			
@@ -55,5 +73,5 @@ public class Main {
 		
 		sc.close();
 	}
-	
+
 }
