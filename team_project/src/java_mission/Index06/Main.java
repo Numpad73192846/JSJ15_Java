@@ -22,6 +22,10 @@ public class Main {
 				for (int k = 0; k <= j; k++) {
 					if ( lotto[j] == lotto[k] ) {
 						lotto[j] = random.nextInt(45) + 1;
+						k--;
+						continue;
+					}
+					else if( lotto[j] != lotto[k] ) {
 						break;
 					}
 				}

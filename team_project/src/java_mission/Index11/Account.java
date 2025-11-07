@@ -2,6 +2,7 @@ package java_mission.Index11;
 
 public class Account {
 	
+	// 캡슐화를 위해 private로 접근
 	private String num;
 	private String name;
 	private int money;
@@ -9,6 +10,7 @@ public class Account {
 	
 
 	public Account() {
+		// Account 기본값 초기화
 		this("계좌없음", "이름없음", 0, 0);
 	}
 	
