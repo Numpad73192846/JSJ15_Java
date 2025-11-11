@@ -1,17 +1,25 @@
 package java_mission.Index11;
 
-public class Account {
+public class Account implements Comparable<Account> {
 	
 	private String num;
 	private String name;
 	private int money;
-	private String passward;
+	private int passward;
 	
 	public Account() {
-		this("계좌없음", "이름없음", 0, "0000");
+		this("계좌없음", "이름없음", 0, 0000);
+	}
+	
+	@Override
+	public int compareTo(Account o) {
+		String thisname = this.getName();
+		String comName = o.getName();
+		int result = thisname.compareTo(comName);
+		return result;
 	}
 
-	public Account(String num, String name, int money, String passward) {
+	public Account(String num, String name, int money, int passward) {
 		this.num = num;
 		this.name = name;
 		this.money = money;
@@ -42,11 +50,11 @@ public class Account {
 		this.money = money;
 	}
 
-	public String getPassward() {
+	public int getPassward() {
 		return passward;
 	}
 
-	public void setPassward(String passward) {
+	public void setPassward(int passward) {
 		this.passward = passward;
 	}
 	

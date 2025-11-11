@@ -1,14 +1,11 @@
 package java_mission.Index12;
 
-import java.util.List;
 
-public class Lotto {
+public class Lotto implements Comparable<Lotto> {
 	
 	private int num;
 	
-
-	
-	public Lotto(List<Lotto> List) {
+	public Lotto() {
 	}
 
 	public Lotto(int num) {
@@ -21,6 +18,14 @@ public class Lotto {
 
 	public void setNum(int num) {
 		this.num = num;
+	}
+
+	@Override
+	public int compareTo(Lotto o) {
+		Integer thisnum = this.getNum();
+		Integer comNum = o.getNum();
+		int result = thisnum.compareTo(comNum);
+		return result;
 	}
 
 }

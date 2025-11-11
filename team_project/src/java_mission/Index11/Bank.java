@@ -1,30 +1,32 @@
 package java_mission.Index11;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Bank {
 
-	private static String adminPassward;
+	private static int adminPassward = 1111;
 	private static List<Account> accountList = new ArrayList<Account>();
-
-	public Bank() {
-		setAdminPassward("1111");
+	
+	static {
+		createAccount("2222-9072", "한로하", 256000, 0000);
 	}
 
-	public void setAdminPassward(String adminPassward) {
+	public void setAdminPassward(int adminPassward) {
 		Bank.adminPassward = adminPassward;
 	}
 
-	public static String getAdminPassward() {
+	public static int getAdminPassward() {
 		return adminPassward;
 	}
 	
 	public static List<Account> getAccountList() {
+		Collections.sort(accountList);
 		return accountList;
 	}
 	
-	public static Account createAccount(String num, String name, int money, String passward) {
+	public static Account createAccount(String num, String name, int money, int passward) {
 		Account account = new Account(num, name, money, passward);
 		accountList.add(account);
 		return account;

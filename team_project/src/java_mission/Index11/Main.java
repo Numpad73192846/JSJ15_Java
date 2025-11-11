@@ -6,8 +6,9 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		String num, name, passward, enterPassword;
-		int menuNo, money, depositAmount, withdrawalAmount;
+		String num, name;
+		int menuNo, money, depositAmount, withdrawalAmount, passward, enterPassword, adminPassward;
+		
 
 		Scanner sc = new Scanner(System.in);
 		Account account, newAccount;
@@ -44,7 +45,7 @@ public class Main {
 				System.out.print("최초예금액>> ");
 				money = sc.nextInt();
 				System.out.print("비밀번호>> ");
-				passward = sc.nextLine();
+				passward = sc.nextInt();
 				sc.nextLine();
 				
 				newAccount = Bank.createAccount(num, name, money, passward);
@@ -103,14 +104,14 @@ public class Main {
 				}
 				else if( account.getNum().equals(num) ) {
 					System.out.print("비밀번호>> ");
-					enterPassword = sc.nextLine();
+					enterPassword = sc.nextInt();
 					
-					if( !account.getPassward().equals(enterPassword) ) {
+					if( account.getPassward() != enterPassword ) {
 						System.err.println("비밀번호가 다릅니다!");
 						System.out.println(account.getPassward());
 						break;
 					}
-					else if( account.getPassward().equals(enterPassword) ) {
+					else if( account.getPassward() == enterPassword ) {
 						System.out.print("출금액>> ");
 						withdrawalAmount = sc.nextInt();
 						sc.nextLine();
@@ -143,29 +144,33 @@ public class Main {
 				}
 				else if( account.getNum().equals(num) ) {
 					System.out.print("비밀번호>> ");
-					passward = sc.nextLine();
+					enterPassword = sc.nextInt();
 					
-					if( !account.getPassward().equals(passward) ) {
+					if( account.getPassward() != enterPassword ) {
 						System.err.println("비밀번호가 다릅니다!");
 						break;
 					}
-					else if( account.getPassward().equals(passward) ) {
+					else if( account.getPassward() == enterPassword ) {
 						System.out.println("'" + account.getName() + "'님의 계좌잔액은 " + account.getMoney() + " 원 입니다.");
+						break;
 					}
 				}
 			case 5:
 				System.out.print("관리자 비밀번호>> ");
-				passward = sc.nextLine();
+				adminPassward = sc.nextInt();
 				sc.nextLine();
 				
-				if( passward != Bank.getAdminPassward() ) {
+				if( adminPassward != Bank.getAdminPassward() ) {
 					System.err.println("비밀번호가 틀립니다.");
 					
 					break;
 				}
-				else if( passward == Bank.getAdminPassward() ) {
+				else if( adminPassward == Bank.getAdminPassward() ) {
 					System.out.println("================= 계좌목록 ================");
-					
+					System.out.println("예금주\t\t계좌번호\t\t잔고");
+					for (Account acc : Bank.getAccountList()) {
+						System.out.println(acc.getName()+ "\t\t" + acc.getNum() + "\t" + acc.getMoney());
+					}
 					break;
 				}
 			}
