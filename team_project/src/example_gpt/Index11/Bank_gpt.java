@@ -1,4 +1,4 @@
-package java_mission.Index11;
+package example_gpt.Index11;
 
 import java.util.ArrayList;
 import java.util.Comparator;
