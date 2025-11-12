@@ -21,12 +21,20 @@ public class Main {
 		return lotto;
 	}
 	
+	public static void removeLotto() {
+		lottoList.remove(0);
+	}
+	
+	public static void clearingLottoList() {
+		lottoList.clear();
+	}
+	
 	public static void main(String[] args) {
 		Random random = new Random();
 		Scanner sc = new Scanner(System.in);
 		
 		int N;
-		
+		 
 		System.out.print("몇 게임? ");
 		N = sc.nextInt();
 
@@ -35,13 +43,22 @@ public class Main {
 			
 			for (int j = 0; j < 6; j++) {
 				createLotto(random.nextInt(45) + 1);
-				
-				for (int k = 0; k < args.length; k++) {
-					
+				for (int k = 0; k < j; k++) {
+					if( lottoList.get(j).getNum() == lottoList.get(k).getNum() ) {
+						lottoList.remove(k);
+						createLotto(random.nextInt(45) + 1);
+						k = -1;
+					}
 				}
 			}
+			for (Lotto lot : getLottoList()) {
+				System.out.print(lot.getNum() + " ");
+			}
+			clearingLottoList();
+			System.out.println();
 		}
 		
+		sc.close();
 	}
 	
 }
