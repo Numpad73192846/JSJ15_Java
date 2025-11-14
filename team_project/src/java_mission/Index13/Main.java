@@ -98,6 +98,56 @@ public class Main {
 		}
 	}
 	
+	public static void lottoWin(int res[],int res2[] ,String result, int gameCount, int count) {
+			
+			if( res[gameCount - count] == 3  ) {
+				result = "(5등)";
+				System.out.print(result);
+			}
+			else if( res[gameCount - count] == 4  ) {
+				result = "(4등)";
+				System.out.print(result);
+			}
+			else if( res[gameCount - count] == 5 ) {
+				if( res2[gameCount - count] == 1 ) {
+					result = "(2등)";
+					System.out.print(result);
+				}
+				else if( res2[gameCount - count] == 0 ) {
+					result = "(3등)";
+					System.out.print(result);
+				}
+			}
+			else if( res[gameCount - count] == 6 ) {
+				result = "(1등)";
+				System.out.print(result);
+			}
+			
+			else {
+				result = "(낙첨)";
+				System.out.print(result);
+			}
+		}
+	
+	public static void winName(int gameCount, int count) {
+		System.out.print((char)('A' + (gameCount - count)) + " ");
+	}
+	
+	public static void lottoWinResult(String arr[][], String am[], int res[], int res2[], int gameCount,int count, String result) {
+		winName(gameCount, count);
+		System.out.print(am[gameCount - count] + " ");
+		lottoNumOut(arr, gameCount, count);
+		lottoWin(res, res2, result, gameCount, count);
+		System.out.println();
+	}
+	
+	public static void lottoResult(String arr[][], String am[], int res[], int res2[], int gameCount,int count, String result) {
+		winName(gameCount, count);
+		System.out.print(am[gameCount - count] + " ");
+		lottoNumOut(arr, gameCount, count);
+		System.out.println();
+	}
+	
 	public void runLotto() {
 		
 		Random random = new Random();
@@ -106,7 +156,8 @@ public class Main {
 		int gameCount, count, n, num, temp;
 		int countNum = 0;
 		int countWin = 0;
-		String result;
+		int countBonusWin = 0;
+		String result = "";
 		int win[] = new int[7];
 		 
 		System.out.print("몇 게임? ");
@@ -116,6 +167,7 @@ public class Main {
 		String arr[][] = new String[gameCount][6];
 		String am[] = new String[gameCount];
 		int res[] = new int[gameCount];
+		int res2[] = new int[gameCount];
 		
 		for (int i = 0; i < gameCount; i++) {
 			System.out.print("[" + (i + 1) + " 게임] (1.자동 / 2.수동) : " );
@@ -184,29 +236,13 @@ public class Main {
 			
 			
 		}
+		System.out.println("\n\n\n");
 		System.out.println("############ 인생역전 Lottoria ############");
 		calendarLotto();
-		System.out.println("----------------------------------------");
-		System.out.print("A " + am[gameCount - count] + " ");
-		lottoNumOut(arr, gameCount, count);
-		count--;
-		System.out.println();
-		System.out.print("B " + am[gameCount - count] + " ");
-		lottoNumOut(arr, gameCount, count);
-		count--;
-		System.out.println();
-		System.out.print("C " + am[gameCount - count] + " ");
-		lottoNumOut(arr, gameCount, count);
-		count--;
-		System.out.println();
-		System.out.print("D " + am[gameCount - count] + " ");
-		lottoNumOut(arr, gameCount, count);
-		count--;
-		System.out.println();
-		System.out.print("E " + am[gameCount - count] + " ");
-		lottoNumOut(arr, gameCount, count);
-		count--;
-		System.out.println();
+		for (int i = 0; i < gameCount; i++) {
+			lottoResult(arr,am,res,res2,gameCount,count,result);
+			count--;
+		}
 		System.out.println("----------------------------------------");
 		System.out.println("금액\t\t\t\t  ￦5,000");
 		System.out.println("########################################");
@@ -240,47 +276,55 @@ public class Main {
 		}
 		System.out.println();
 		System.out.print("보너스 번호 : " + win[6]);
-		System.out.println();
+		System.out.println("\n\n\n\n");
 		
-		count = gameCount;
 		
 		for (int i = 0; i < arr.length; i++) {
+			
 			for (int j = 0; j < arr[i].length; j++) {
+				
+				if( countNum == 7 ) {
+					res[i] = countWin;
+					res2[i] = 0;
+					countWin = 0;
+					countNum = 0;
+					break;
+				}
+				
+				if( arr[i][j].equals(Integer.toString(win[countNum])) && countNum == 6 ) {
+					countBonusWin++;
+					res[i] = countWin;
+					res2[i] = countBonusWin;
+					countWin = 0;
+					countNum = 0;
+					countBonusWin = 0;
+					break;
+				}
+				
 				if( arr[i][j].equals(Integer.toString(win[countNum])) ) {
 					countWin++;
+					countNum++;
 					j = 0;
+					continue;
 				}
+				
+				else if( j == 5 ) {
+					countNum++;
+					j = 0;
+					continue;
+				}
+				
 			}
 		}
 	
+		count = gameCount;
 		
-		for (int i = 0; i < res.length; i++) {
-			System.out.println(res[i]);
+		System.out.println("#################### 당첨 결과 ####################");
+		for (int i = 0; i < gameCount; i++) {
+			lottoWinResult(arr,am,res,res2,gameCount,count,result);
+			count--;
 		}
-		
-		
-		System.out.println("################# 당첨 결과 #################");
-		System.out.print("A " + am[gameCount - count] + " ");
-		lottoNumOut(arr, gameCount, count);
-		count--;
-		System.out.println();
-		System.out.print("B " + am[gameCount - count] + " ");
-		lottoNumOut(arr, gameCount, count);
-		count--;
-		System.out.println();
-		System.out.print("C " + am[gameCount - count] + " ");
-		lottoNumOut(arr, gameCount, count);
-		count--;
-		System.out.println();
-		System.out.print("D " + am[gameCount - count] + " ");
-		lottoNumOut(arr, gameCount, count);
-		count--;
-		System.out.println();
-		System.out.print("E " + am[gameCount - count] + " ");
-		lottoNumOut(arr, gameCount, count);
-		count--;
-		System.out.println();
-		System.out.println("##########################################");
+		System.out.println("################################################");
 		
 		sc.close();
 	}

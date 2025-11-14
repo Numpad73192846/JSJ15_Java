@@ -6,7 +6,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/JSJ 15/lib/lombok.jar">
+	<classpathentry kind="lib" path="C:/JSJ_15/Programing/Github/JSJ15_Java/team_project/lib/lombok.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
