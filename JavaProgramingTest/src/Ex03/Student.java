@@ -2,10 +2,11 @@ package Ex03;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class Student {
+public class Student implements Comparable<Student> {
 	
 	private static LinkedList<Student> studentList = new LinkedList<>();
 	
@@ -57,8 +58,33 @@ public class Student {
 	public String toString() {
 		return no + " " + name + " " + score + " " + className;
 	}
+	
+//	@Override
+//	public int compareTo(Student other) {
+//	    if ( this.getScore() != other.getScore() ) {
+//	    	return other.getScore() - this.getScore();
+//	    } else {
+//	    	return this.getNo() - other.getNo();
+//	    }
+//	}
+	
+	@Override
+	public int compareTo(Student other) {
+	    if ( this.getScore() != other.getScore() ) {
+	    	Integer thisScore = this.getScore();
+	    	Integer otherScore = other.getScore();
+	    	int result = otherScore.compareTo(thisScore);
+	    	return result;
+	    } else {
+	    	Integer thisNo = this.getNo();
+	    	Integer otherNo = other.getNo();
+	    	int result = thisNo.compareTo(otherNo);
+	    	return result;
+	    }
+	}
 
 	public static LinkedList<Student> getStudentList() {
+		Collections.sort(studentList);
 		return studentList;
 	}
 
