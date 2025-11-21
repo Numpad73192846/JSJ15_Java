@@ -65,7 +65,7 @@ public class Main {
 				break;
 			}
 			
-			if( n <= 3 ) {
+			if( n >= 1 && n <= 3 ) {
 				count++;
 			}
 			
