@@ -1,6 +1,6 @@
 package example_gpt.Index10;
 
-public class Triangle {
+public class Triangle extends Figure {
 	
 	double width, height;
 
@@ -29,13 +29,19 @@ public class Triangle {
 		this.height = height;
 	}
 	
+	@Override
 	public double getArea() {
 		return (width * height) / 2;
+	}
+	
+	@Override
+	double getPerimeter() {
+		return width*3;
 	}
 
 	@Override
 	public String toString() {
 		return "Triangle [width=" + width + ", height=" + height + "]";
 	}
-	
+
 }

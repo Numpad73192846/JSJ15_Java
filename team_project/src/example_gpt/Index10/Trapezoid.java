@@ -41,10 +41,11 @@ public class Trapezoid {
 	public double getArea() {
 		return (top + bottom) * height / 2;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Trapezoid [top=" + top + ", bottom=" + bottom + ", height=" + height + "]";
 	}
+
 	
 }

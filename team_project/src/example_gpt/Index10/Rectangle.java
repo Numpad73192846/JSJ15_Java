@@ -1,6 +1,6 @@
 package example_gpt.Index10;
 
-public class Rectangle {
+public class Rectangle extends Figure implements Rotatable{
 	
 	double width, height;
 
@@ -29,15 +29,24 @@ public class Rectangle {
 		this.height = height;
 	}
 
+	@Override
 	public double getArea() {
 		return width * height;
+	}
+	
+	@Override
+	double getPerimeter() {
+		return (width + height) * 2;
+	}
+	
+	@Override
+	public void rotate(double angle) {
+		System.out.println((int)angle + "도 회전");
 	}
 	
 	@Override
 	public String toString() {
 		return "Rectangle [width=" + width + ", height=" + height + "]";
 	}
-	
-	
 
 }

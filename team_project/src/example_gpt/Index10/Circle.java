@@ -1,6 +1,6 @@
 package example_gpt.Index10;
 
-public class Circle {
+public class Circle extends Figure implements Colorable {
 
 	double radius;
 
@@ -25,8 +25,19 @@ public class Circle {
 	}
 
 	@Override
+	double getPerimeter() {
+		return 2 * Math.PI * radius;
+	}
+	
+	@Override
 	public String toString() {
 		return "Circle [radius=" + radius + "]";
 	}
+
+	@Override
+	public void fillColor(String Color) {
+		System.out.println(Color + "으로 채움");
+	}
+
 	
 }
