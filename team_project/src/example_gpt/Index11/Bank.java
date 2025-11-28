@@ -1,44 +1,45 @@
 package example_gpt.Index11;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
+// 계좌 생성 및 조회, 전체 예금
 public class Bank {
-
-	private static int adminPassward = 1111;
-	private static List<Account> accountList = new ArrayList<Account>();
 	
-	static {
-		createAccount("2222-9072", "한로하", 256000, 0000);
-	}
-
-	public void setAdminPassward(int adminPassward) {
-		Bank.adminPassward = adminPassward;
-	}
-
-	public static int getAdminPassward() {
-		return adminPassward;
+	final long MAX_BANK_AMOUNT = 1000000000000L;
+	final int MAX_ACCOUNT = 1000;
+	
+	private static List<Account> accountList = new ArrayList<>();
+	private long totalAmount = 0L;
+	
+	public Bank() {
+		createAccount("2222-9072", "한로하", 256000, "0000");
 	}
 	
-	public static List<Account> getAccountList() {
-		Collections.sort(accountList);
-		return accountList;
-	}
-	
-	public static Account createAccount(String num, String name, int money, int passward) {
-		Account account = new Account(num, name, money, passward);
+	public Account createAccount(String accountNum, String name, long money, String passward) {
+		Account account = new Account(accountNum, name, money, passward);
 		accountList.add(account);
+		
 		return account;
 	}
-
-	public static Account findAccount(String num) {
-		for (Account account : accountList) {
-			if( account.getNum().equals(num) ) {
-				return account;
-			}
-		}
+	
+	public Account findAccount(String accountNum) {
 		return null;
 	}
 	
+    public boolean deposit(String num, int money) {
+    	return null;
+    }
+
+    public boolean withdraw(String num, int money, String pw) {
+    	return null;
+    }
+
+    public long getTotalAmount() {
+    	return null;
+    }
+
+    public Account[] getAllAccounts() {
+    	return null;
+    }
 }
