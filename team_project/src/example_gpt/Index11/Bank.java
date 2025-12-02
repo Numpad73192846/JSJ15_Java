@@ -1,6 +1,7 @@
 package example_gpt.Index11;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 // 계좌 생성 및 조회, 전체 예금
@@ -44,7 +45,7 @@ public class Bank {
 		return null;
 	}
 	
-    public boolean deposit(String num, int money) {
+    public boolean deposit(String num, Long money) {
     	Account account = findAccount(num);
     	
     	if ( account == null ) {
@@ -62,11 +63,16 @@ public class Bank {
     	return false;
     }
 
-    public boolean withdraw(String num, int money, String pw) {
+    public boolean withdraw(String num, Long money, String pw) {
     	Account account = findAccount(num);
     	
     	if ( account == null ) {
             System.err.println("해당 계좌번호가 존재하지 않습니다.");
+            return false;
+    	}
+    	
+    	if ( !account.getPassward().equals(pw) ) {
+            System.err.println("비밀번호가 틀립니다.");
             return false;
     	}
     	
@@ -85,6 +91,7 @@ public class Bank {
     }
 
     public Account[] getAllAccounts() {
-    	return null;
+    	Collections.sort(accountList);
+    	return accountList.toArray(new Account[0]);
     }
 }

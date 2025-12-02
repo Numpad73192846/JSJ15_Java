@@ -22,7 +22,7 @@ public class Account implements Comparable<Account> {
 		this.passward = passward;
 	}
 
-	public boolean deposit(int money) {
+	public boolean deposit(Long money) {
 		if( MAX_LIMIT < money ) {
 			System.err.println("1회 최대 송금액은 1,000,000원 입니다.");
 			return false;
@@ -35,7 +35,7 @@ public class Account implements Comparable<Account> {
 		return true;
 	}
 	
-	public boolean withdraw(int money) {
+	public boolean withdraw(Long money) {
 		if( MAX_LIMIT < money ) {
 			System.err.println("1회 최대 출금액은 1,000,000원 입니다.");
 			return false;
