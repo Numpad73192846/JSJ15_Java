@@ -45,21 +45,43 @@ public class Bank {
 	}
 	
     public boolean deposit(String num, int money) {
-    	for (Account account : accountList) {
-			if ( account.getAccountNum().equals(num) ) {
-				account.deposit(money);
-				totalAmount += money;
-			}
-		}
+    	Account account = findAccount(num);
+    	
+    	if ( account == null ) {
+            System.err.println("해당 계좌번호가 존재하지 않습니다.");
+            return false;
+    	}
+    	
+    	boolean success = account.deposit(money);
+    	
+    	if ( success == true ) {
+    		totalAmount += money;
+    		return true;
+    	}
+    	
     	return false;
     }
 
     public boolean withdraw(String num, int money, String pw) {
-    	return null;
+    	Account account = findAccount(num);
+    	
+    	if ( account == null ) {
+            System.err.println("해당 계좌번호가 존재하지 않습니다.");
+            return false;
+    	}
+    	
+    	boolean success = account.withdraw(money);
+    	
+    	if ( success == true ) {
+    		totalAmount -= money;
+    		return true;
+    	}
+    	
+    	return false;
     }
 
     public long getTotalAmount() {
-    	return null;
+    	return totalAmount;
     }
 
     public Account[] getAllAccounts() {
