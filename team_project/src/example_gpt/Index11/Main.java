@@ -52,12 +52,34 @@ public class Main {
                 	System.out.print("입금액>> ");
                 	money = sc.nextInt();
                 	
-                	bank.deposit(accountNum, money);
-                
+                	Account account = bank.findAccount(accountNum);
+                	
+                	System.out.println("'" + account.getName() + "'님에게 입금하는게 맞으십니까?" );
+                	System.out.println("1. 예");
+                	System.out.println("2. 아니오");
+                	System.out.print("입력>> ");
+                	int result = sc.nextInt();
+                	
+                	switch (result) {
+					case 1:
+						bank.deposit(accountNum, money);
+						System.out.println("'" + account.getName() + "'님의 계좌에 " + money + " 원이 입급되었습니다.");
+						break;
+					case 2:
+						break;
+					}
+                	
                     break;
 
                 case 3:
-                    // TODO: 출금
+                	System.out.print("계좌번호>> ");
+                	accountNum = sc.nextLine();
+                	System.out.print("비밀번호>> ");
+                	passward = sc.nextLine();
+                	System.out.print("출금액>> ");
+                	money = sc.nextInt();
+                	bank.findAccount(accountNum);
+                    bank.withdraw(accountNum, money, passward);
                     break;
 
                 case 4:
